@@ -1,5 +1,7 @@
 <?php    
 ob_start(); 
+session_start();
+
     include '../php/connect.php';
     
     //include 'readrecords.php';   
@@ -73,26 +75,28 @@ ob_start();
 		$pwd=$_POST['txtpassword'];
 		//check tbluseraccount if username is existing
 		$sql ="Select * from tbluseraccount where email='".$email."'";
+
+
 		
 		$result = mysqli_query($connection,$sql);	
 		
 		$count = mysqli_num_rows($result);
 		$row = mysqli_fetch_array($result);
 		
-		if($count== 0){
-			echo "<script language='javascript'>
-						alert('Email not existing.');
-				  </script>";
-		}else if($row[3] != $pwd) {
-			echo "<script language='javascript'>
-						alert('Incorrect password');
-				  </script>";
-		}else{
-			$_SESSION['email']=$row['0'];
-			header("Location:index.php"); 
-      
-		}
-			
+		if ($count == 0) {
+      echo "<script language='javascript'>
+                  alert('Email not existing.');
+            </script>";
+  } else if ($row['3'] != $pwd) {
+      echo "<script language='javascript'>
+                  alert('Incorrect password');
+            </script>";
+  } else {
+      $_SESSION['email'] = $row['email'];
+      $_SESSION['username'] = $row['username'];
+      header("Location:dashboard.php");
+      exit(); 
+  }
 		
 	}
 		

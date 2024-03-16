@@ -12,17 +12,17 @@
 
     <div class="page-navbar"> 
       <ul>
-        <li><a href="/client/src/pages/index.html">Home</a></li>
-        <li><a href="about-us.html">About Us</a></li>
-        <li><a href="contact-us.html">Contact Us</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="about-us.php">About Us</a></li>
+        <li><a href="contact-us.php">Contact Us</a></li>
       </ul>
     </div>
 
     <div class="navbar-button-container">
-      <a href = "login.html">
+      <a href = "login.php">
         <button class="buttons" id="btn-login">Login</button>
       </a>
-     <a href = "register.html">
+     <a href = "register.php">
       <button class="buttons" id ="btn-register">Register</button>
      </a>
      
