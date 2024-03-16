@@ -93,7 +93,7 @@
 		$email=$_POST['txtemail'];		
 		$uname=$_POST['txtuname'];
 		$pword=$_POST['txtpassword'];
-    $hashed_password = password_hash($pword, PASSWORD_DEFAULT);
+    $hashed_password = password_hash($pword, PASSWORD_BCRYPT);
     $gender=$_POST['gender-option'];
 
     $month = $_POST['month'];
@@ -113,11 +113,13 @@
 		$result = mysqli_query($connection,$sql2);
 		$row = mysqli_num_rows($result);
 		if($row == 0){
-			$sql ="Insert into tbluseraccount(account_id, email,username,password, user_type) values('$user_id', '$email', '$uname', '$$hashed_password', '$usertype')";
+			$sql ="Insert into tbluseraccount(account_id, email,username,password, user_type) values('$user_id', '$email', '$uname', '$hashed_password', '$usertype')";
 			mysqli_query($connection,$sql);
 			echo "<script language='javascript'>
 						alert('New record saved.');
+            window.location.href = 'login.php'; 
 				  </script>";
+         
 		}else{
 			echo "<script language='javascript'>
 						alert('Username already existing');

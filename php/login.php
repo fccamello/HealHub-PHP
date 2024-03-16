@@ -79,23 +79,28 @@ session_start();
 
 		
 		$result = mysqli_query($connection,$sql);	
-		
+
+   
 		$count = mysqli_num_rows($result);
 		$row = mysqli_fetch_array($result);
+
+
+    $passver = password_verify($pwd, $row['password']);
 		
 		if ($count == 0) {
       echo "<script language='javascript'>
                   alert('Email not existing.');
             </script>";
-  } else if ($row['3'] != $pwd) {
-      echo "<script language='javascript'>
+  } else if   ($passver == true )  {
+    $_SESSION['email'] = $row['email'];
+    $_SESSION['username'] = $row['username'];
+    header("Location:dashboard.php");
+    exit(); 
+      
+  } else {
+     echo "<script language='javascript'>
                   alert('Incorrect password');
             </script>";
-  } else {
-      $_SESSION['email'] = $row['email'];
-      $_SESSION['username'] = $row['username'];
-      header("Location:dashboard.php");
-      exit(); 
   }
 		
 	}
