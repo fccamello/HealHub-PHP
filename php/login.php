@@ -58,6 +58,12 @@ session_start();
         </div>
         <button id="login-button" class="btn-login" name ="btnLogin" type="submit">Log In</button>
       </form>
+
+      <div id = "responseContainer"
+          style="display: flex; justify-content: center; align-items: center; width: 100%; height: 30px;">
+          <p style="margin: auto" id="response-message"></p>
+        </div>
+
       <div class="socials-wrapper">
 
       </div>
@@ -88,24 +94,70 @@ session_start();
     $passver = password_verify($pwd, $row['password']);
 		
 		if ($count == 0) {
-      echo "<script language='javascript'>
-                  alert('Email not existing.');
-            </script>";
+      echo "<script>
+      document.getElementById('response-message').innerHTML = 'Email not existing. Please try again.';
+      document.getElementById('responseContainer').classList.add('error-wrapper');
+      document.getElementById('login-email').classList.add('login-error');
+      document.getElementById('login-password').classList.add('login-error');
+      
+      setTimeout(function(){
+          document.getElementById('response-message').innerHTML = '';
+          document.getElementById('responseContainer').classList.remove('error-wrapper');
+          document.getElementById('login-email').classList.remove('login-error');
+          document.getElementById('login-password').classList.remove('login-error');
+      }, 1500); 
+  </script>";         
+  
   } else if   ($passver == true )  {
     $_SESSION['email'] = $row['email'];
     $_SESSION['username'] = $row['username'];
-    header("Location:dashboard.php");
-    exit(); 
+
+    echo "<script language='javascript'>
+            document.getElementById('response-message').innerHTML = 'SUCCESS';
+            // document.getElementById('response-message').style.display = 'block';
+            document.getElementById('responseContainer').classList.add('success-wrapper');
+            document.getElementById('login-email').classList.add('login-success');
+            document.getElementById('login-password').classList.add('login-success');
+            setTimeout(function(){
+              window.location.href = 'dashboard.php';
+          }, 1500);
+				  </script>";
+         
+
+    // header("Location:dashboard.php");
+    // exit(); 
       
   } else {
-     echo "<script language='javascript'>
-                  alert('Incorrect password');
-            </script>";
+    echo "<script>
+    document.getElementById('response-message').innerHTML = 'Incorrect password. Please try again.';
+    document.getElementById('responseContainer').classList.add('error-wrapper');
+    document.getElementById('login-email').classList.add('login-error');
+    document.getElementById('login-password').classList.add('login-error');
+    
+    setTimeout(function(){
+        document.getElementById('response-message').innerHTML = '';
+        document.getElementById('responseContainer').classList.remove('error-wrapper');
+        document.getElementById('login-email').classList.remove('login-error');
+        document.getElementById('login-password').classList.remove('login-error');
+    }, 1500); 
+</script>";         
+
+            
   }
 		
 	}
 		
 
 ?>
+
+<script>
+
+const btnNavigateToRegister = document.getElementById("nav-to-register");
+    btnNavigateToRegister.addEventListener("click", () => {
+        window.location.href = "register.php";
+    });
+
+    </script>
+
 <!-- 
 <?php require_once 'includes/footer.php'; ?> -->

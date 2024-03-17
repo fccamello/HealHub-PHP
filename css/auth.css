@@ -197,3 +197,20 @@ select {
   outline: solid red 2px !important; /*important to override data-focus*/
   border: none !important;
 }
+
+.login-success {
+  outline: solid green 2px !important; /*important to override data-focus*/
+  border: none !important;
+}
+
+.error-wrapper {
+  background-color: red;
+  color: white;
+  border: solid gray 1px;
+}
+
+.success-wrapper {
+  background-color: green;
+  color: white;
+  border: solid gray 1px;
+}
