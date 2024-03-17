@@ -103,16 +103,19 @@
     $birthdate = "$year-$month-$day";
 		
 		//save data to tbluserprofile			
-		$sql1 ="Insert into tbluserprofile(firstname,lastname,gender,birthdate) values('".$fname."','".$lname."', '".$gender."', '".$birthdate."')";
-		mysqli_query($connection,$sql1);
+		
 		
 		//Check tbluseraccount if username is already existing. Save info if false. Prompt msg if true.
 		$sql2 ="Select * from tbluseraccount where username='".$uname."'";
-
-    $user_id = mysqli_insert_id($connection);
 		$result = mysqli_query($connection,$sql2);
 		$row = mysqli_num_rows($result);
 		if($row == 0){
+
+      $sql1 ="Insert into tbluserprofile(firstname,lastname,gender,birthdate) values('".$fname."','".$lname."', '".$gender."', '".$birthdate."')";
+		  mysqli_query($connection,$sql1);
+
+      $user_id = mysqli_insert_id($connection);
+
 			$sql ="Insert into tbluseraccount(account_id, email,username,password, user_type) values('$user_id', '$email', '$uname', '$hashed_password', '$usertype')";
 			mysqli_query($connection,$sql);
 			echo "<script language='javascript'>
