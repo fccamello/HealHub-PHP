@@ -111,7 +111,11 @@
         </div>
       </div>
 
+
       <button id="signup-button" class="btn-sign-up" name ="btnRegister" type="submit">Sign Up</button>
+
+      <div style="color: green; font-weight: bold;" id="successMessage"></div>
+
       <a class="nav-link" href="login.php">Already have an account?</a>
     </form>
   </div>
@@ -155,10 +159,14 @@
 
 			$sql ="Insert into tbluseraccount(account_id, email,username,password, user_type) values('$user_id', '$email', '$uname', '$hashed_password', '$usertype')";
 			mysqli_query($connection,$sql);
-			echo "<script language='javascript'>
-						alert('New record saved.');
-            window.location.href = 'login.php'; 
-				  </script>";
+			echo "<script>
+      var successMessage = document.getElementById('successMessage');
+      successMessage.innerHTML = 'New Record Saved';
+      setTimeout(function(){
+        window.location.href = 'login.php'; 
+          }, 1500);
+      
+      </script>";
          
 		}else{
 			echo "<script>

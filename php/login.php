@@ -41,6 +41,7 @@ session_start();
       <p style="color: white; opacity: 0.5; font-size: 1rem; margin-top: 20px">Don't have an account?</p>
       
       <button id="nav-to-register" class="btn-create-account">Sign Up</button>
+
      
     </div>
     <div id="right-content">
@@ -141,8 +142,6 @@ session_start();
         document.getElementById('login-password').classList.remove('login-error');
     }, 1500); 
 </script>";         
-
-            
   }
 		
 	}
