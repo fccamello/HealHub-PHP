@@ -83,8 +83,6 @@ session_start();
 		//check tbluseraccount if username is existing
 		$sql ="Select * from tbluseraccount where email='".$email."'";
 
-
-		
 		$result = mysqli_query($connection,$sql);	
 
    

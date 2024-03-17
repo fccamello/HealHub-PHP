@@ -120,8 +120,7 @@
     </form>
   </div>
 
-  
-<?php	
+  <?php	
 	if(isset($_POST['btnRegister'])){		
 		//retrieve data from form and save the value to a variable
 		//for tbluserprofile
@@ -133,8 +132,8 @@
 		//for tbluseraccount
 		$email=$_POST['txtemail'];		
 		$uname=$_POST['txtuname'];
-		$pword=$_POST['txtpassword'];
-    $hashed_password = password_hash($pword, PASSWORD_BCRYPT);
+		// $pword=
+    $hashed_password = password_hash($_POST['txtpassword'], PASSWORD_BCRYPT);
     $gender=$_POST['gender-option'];
 
     $month = $_POST['month'];
@@ -146,19 +145,25 @@
 		//save data to tbluserprofile			
 		
 		
-		//Check tbluseraccount if username is already existing. Save info if false. Prompt msg if true.
-		$sql2 ="Select * from tbluseraccount where username='".$uname."'";
-		$result = mysqli_query($connection,$sql2);
-		$row = mysqli_num_rows($result);
-		if($row == 0){
+		//Check tbluseraccount if username and email are already existing. Save info if false. Prompt msg if true.
+		$sql_email_check ="SELECT * FROM tbluseraccount WHERE email='$email'";
+		$result_email_check = mysqli_query($connection, $sql_email_check);
+		$row_email_check = mysqli_num_rows($result_email_check);
 
-      $sql1 ="Insert into tbluserprofile(firstname,lastname,gender,birthdate) values('".$fname."','".$lname."', '".$gender."', '".$birthdate."')";
-		  mysqli_query($connection,$sql1);
+		$sql_username_check ="SELECT * FROM tbluseraccount WHERE username='$uname'";
+		$result_username_check = mysqli_query($connection, $sql_username_check);
+		$row_username_check = mysqli_num_rows($result_username_check);
+
+		if($row_email_check == 0 && $row_username_check == 0){
+
+      $sql1 ="INSERT INTO tbluserprofile(firstname,lastname,gender,birthdate) VALUES('$fname','$lname', '$gender', '$birthdate')";
+		  mysqli_query($connection, $sql1);
 
       $user_id = mysqli_insert_id($connection);
 
-			$sql ="Insert into tbluseraccount(account_id, email,username,password, user_type) values('$user_id', '$email', '$uname', '$hashed_password', '$usertype')";
-			mysqli_query($connection,$sql);
+			$sql ="INSERT INTO tbluseraccount(account_id, email,username,password, user_type) VALUES('$user_id', '$email', '$uname', '$hashed_password', '$usertype')";
+			mysqli_query($connection, $sql);
+      
 			echo "<script>
       var successMessage = document.getElementById('successMessage');
       successMessage.innerHTML = 'New Record Saved';
@@ -169,10 +174,18 @@
       </script>";
          
 		}else{
-			echo "<script>
-      document.getElementById('modalMessage').innerHTML = 'Username already existing';
-      $('#messageModal').modal('show');
-      </script>";
+			if($row_email_check > 0){
+				echo "<script>
+      			document.getElementById('modalMessage').innerHTML = 'Email already exists';
+      			$('#messageModal').modal('show');
+      			</script>";
+			}
+			if($row_username_check > 0){
+				echo "<script>
+      			document.getElementById('modalMessage').innerHTML = 'Username already exists';
+      			$('#messageModal').modal('show');
+      			</script>";
+			}
 		}
 			
 	}
