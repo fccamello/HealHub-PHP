@@ -36,7 +36,6 @@
 
         </div>
 
-  
 
         <footer class="page-footer">
           <h2>Fria Mae Camello</h2>

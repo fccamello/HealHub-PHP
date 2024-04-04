@@ -56,4 +56,8 @@
   </div>
 
 
+  <footer class="page-footer">
+            <h2>Fria Mae Camello</h2>
+            <h4>BSCS - 2</h4>
+  </footer>
 <!-- <?php require_once 'includes/footer.php'; ?> -->

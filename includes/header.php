@@ -15,6 +15,8 @@
         <li><a href="index.php">Home</a></li>
         <li><a href="about-us.php">About Us</a></li>
         <li><a href="contact-us.php">Contact Us</a></li>
+        <li><a href="dashboard.php">Dashboard</a></li>
+        <li><a href="appointment.php">Appointment</a></li>
       </ul>
     </div>
 

@@ -1,0 +1,17 @@
+#appointment-form{
+    background-color: pink;
+    width: 50%;
+    height: 50%;
+    margin-right: 25%;
+    margin-top: 5%;
+    margin-left: 25%;
+
+}
+
+#tblappointment{
+    width: 90%;
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 2%;
+    background-color: pink;
+}
