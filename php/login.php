@@ -110,6 +110,7 @@ session_start();
   } else if   ($passver == true )  {
     $_SESSION['email'] = $row['email'];
     $_SESSION['username'] = $row['username'];
+    $_SESSION['account_id'] = $row['account_id'];
 
     echo "<script language='javascript'>
             document.getElementById('response-message').innerHTML = 'SUCCESS';

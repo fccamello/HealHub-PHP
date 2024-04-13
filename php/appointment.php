@@ -82,7 +82,7 @@
 		
 		//save data to tbluserprofile			
 
-    $sql1 ="INSERT INTO tblappointment(PatientID,DoctorID,AppointmentDate) VALUES('$PatientID', '$DoctorID', '$appointmentDate')";
+    $sql1 ="INSERT INTO tblappointment(patient_id,doctor_id,appointment_date) VALUES('$PatientID', '$DoctorID', '$appointmentDate')";
 		mysqli_query($connection, $sql1);
 		
   }
@@ -109,14 +109,14 @@ $resultset = $mysqli->query("SELECT* from tblappointment") or die ($mysqli->erro
     <?php while ($row = $resultset -> fetch_assoc()) : ?>
 
       <tr> 
-        <td> <?php echo $row['AppointmentID'] ?> </td>
-        <td> <?php echo $row['PatientID'] ?> </td>
-        <td> <?php echo $row['DoctorID'] ?> </td>
-        <td> <?php echo $row['AppointmentDate'] ?> </td>
+        <td> <?php echo $row['appointment_id'] ?> </td>
+        <td> <?php echo $row['patient_id'] ?> </td>
+        <td> <?php echo $row['doctor_id'] ?> </td>
+        <td> <?php echo $row['appointment_date'] ?> </td>
         <td> 
           <a href = ""> VIEW </a>
           <a href = ""> DELETE </a>
-    </td>
+    </tr>
     <?php endwhile;?>
 
   </tbody>
