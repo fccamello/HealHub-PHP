@@ -35,8 +35,7 @@
 
     <div class="navbar-button-container">
       <a href="index.php">
-        <!-- <button class="buttons" id="btn-logout">  Log Out</button> -->
-      </a>
+      <button class="buttons" id="btn-logout"> <?php session_destroy(); ?> Log Out</button>      </a>
     </div>
   </div>
 
