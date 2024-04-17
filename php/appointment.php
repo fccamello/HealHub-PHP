@@ -95,7 +95,7 @@ $resultset = $mysqli->query("SELECT* from tblappointment") or die ($mysqli->erro
 ?>
 
 <p style = "text-align: center; margin-top: 2%" > APPOINTMENT TABLE </p>
-  <table id ="tblappointment" cellspacing="0" width="100%">
+  <table id ="tblappointment" cellspacing="0" width="100%" >
 
   <thead>
     <tr>
@@ -124,7 +124,7 @@ $resultset = $mysqli->query("SELECT* from tblappointment") or die ($mysqli->erro
 
   </table>
 
-  <footer class="page-footer">
+  <footer class="page-footer" style="margin-top: 10%";>
             <h2>Fria Mae Camello</h2>
             <h4>BSCS - 2</h4>
   </footer>

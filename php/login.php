@@ -111,6 +111,7 @@ session_start();
     $_SESSION['email'] = $row['email'];
     $_SESSION['username'] = $row['username'];
     $_SESSION['account_id'] = $row['account_id'];
+    $_SESSION['user_type'] = $row['user_type'];
 
     echo "<script language='javascript'>
             document.getElementById('response-message').innerHTML = 'SUCCESS';

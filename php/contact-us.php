@@ -1,6 +1,7 @@
 <?php    
     include '../php/connect.php';
-    //include 'readrecords.php';   
+    //include 'readrecords.php';  
+    $includeLoginRegister = true; 
     require_once '../includes/header.php'; 
 ?>
 
@@ -16,10 +17,7 @@
 
 </head>
 <body>
-    
-
-      <hr>
-    
+        
       <div id="container">
 
         <div class="first-div" style="background-color: none">
@@ -49,14 +47,12 @@
             </div>
 
         </div>
+      </div>
 
-        <footer class="page-footer">
+      <footer class="page-footer">
             <h2>Fria Mae Camello</h2>
             <h4>BSCS - 2</h4>
         </footer>
-
-
-      </div>
 
 
 

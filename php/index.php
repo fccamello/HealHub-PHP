@@ -1,6 +1,7 @@
 <?php    
     include '../php/connect.php';
     //include 'readrecords.php';   
+    $includeLoginRegister = true;
     require_once '../includes/header.php'; 
 ?>
 
@@ -12,52 +13,39 @@
   <link rel="stylesheet" href="../css/index.css">
   <title>HealHub</title>
 </head>
-
- <div class="page-contents-container">
+<body>
+  <div class="page-contents-container">
     <div class="header-container">
-        <div class ="header-text">
-           <p> Consult a doctor <br> anytime, anywhere <br> by <span class="text-underline"> video call</span> </p> 
-           <p class="header-lowtext"> Talk with a doctor now!</p>
-        </div>
-
-      <div class ="header-buttons">
+      <div class="header-text">
+        <div class="header-text-content">
+         
+        <p style="width: auto">Get <span class="text-highlight" style="width: auto;">immediate medical advice</span> anytime, with <br> our <span class="text-underline">appointment</span> service!</p>
+       <div>
+        <p class="header-lowtext">Talk with a doctor now!</p>
+        <div class="header-buttons">
         <button class="book-an-appointment">Book an Appointment</button>
         <button class="chat-a-doctor">Chat a Doctor</button>
       </div>
-     
-
-    </div>
-
-    <div class="trust-us-container">
-        <div class = "trust-us-text">
-            Why you should trust us? <br> Get to know about us
+       </div>
+        
         </div>
-    </div>
-
-    
-    <div class = "about-us-container">
-      <div class = "about-us-one">
-
       </div>
 
-      <div class = "about-us-two">
-
+      <div>
+      <img src="/images/index-banner.png" style="width: 114%; height: 105%" class="header-image">
       </div>
       
-      <div class = "about-us-three">
+    </div>
 
-      </div>
-
-      <div class = "about-us-four">
-
-      </div>
-
+    <div class="about-us-container">
+      
+      <img src="/images/about-us-index.png" style="width: 95%; height: 95%" >
+      
     </div> 
-  </div>
-
 
   <footer class="page-footer">
-            <h2>Fria Mae Camello</h2>
-            <h4>BSCS - 2</h4>
+    <h2>Fria Mae Camello</h2>
+    <h4>BSCS - 2</h4>
   </footer>
-<!-- <?php require_once 'includes/footer.php'; ?> -->
+</body>
+</html>
