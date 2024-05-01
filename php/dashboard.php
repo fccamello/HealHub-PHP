@@ -213,25 +213,68 @@ if(isset($_SESSION['username']) && $_SESSION['user_type'] == '2') {
             </tr>
         </thead>
         <tbody>
-            <?php while ($row = $resultsetdoctor -> fetch_assoc()) : ?>
+            <?php while ($row = $resultsetdoctor -> fetch_assoc() ) : ?>
                 <tr> 
                     <td style="text-align: center;"><?php echo $row['doctor_id'] ?></td>
                     <td style="text-align: center;"><?php echo $row['account_id'] ?></td>
                     <td style="text-align: center;"><?php echo $row['specialization'] ?></td>
-                   
+                    <td> 
+                        <form method ="POST">
+                            <input type="hidden" name="doctor_id" value="<?php echo $row['doctor_id'] ?>">
+                            <input type="hidden" name="account_id" value="<?php echo $row['account_id'] ?>">
+                            <input type="hidden" name="specialization" value="<?php echo $row['specialization'] ?>">
+                         <input id ="updated-specialization" name="updated-doctor-specialization" placeholder="Add specialization">
+                         <button id ="add-specialization" name="add-specialization" type="submit" > Update specialization </button> 
+                         <!-- <button id ="resign-doctor" name="resign-doctor" type="submit" > Resign Doctor </button>  -->
+                         </form>
+
+                         <form method ="POST">
+                            <input type="hidden" name="doctor_id2" value="<?php echo $row['doctor_id'] ?>">
+                            <input type="hidden" name="account_id2" value="<?php echo $row['account_id'] ?>">
+                            <input type="hidden" name="specialization2" value="<?php echo $row['specialization'] ?>">
+                         <button id ="resign-doctor" name="resign-doctor" type="submit" > Resign Doctor </button> 
+                         </form>
+                    </td>
+
                 </tr>
             <?php endwhile;?>
         </tbody>
     </table>
+            
+    
+  
+    <?php
+
+    if (isset($_POST['add-specialization']))
+    {
+        $doctor_id = $mysqli->real_escape_string($_POST['doctor_id']);
+        $account_id = $mysqli->real_escape_string($_POST['account_id']);
+        $specialization = $mysqli->real_escape_string($_POST['specialization']);
+        $updated_specialization =  $_POST['updated-doctor-specialization'];
+         
+        // $newSpecialization = json_encode($updated_specialization, JSON_PRETTY_PRINT);
+
+        if (!empty($updated_specialization))
+        {
+            $query_update_doctor = "UPDATE tbldoctor SET specialization = '$updated_specialization' WHERE doctor_id = '$doctor_id'";
+            $result_updated_specialization = $mysqli->query($query_update_doctor);
+        }
+
+        echo '<script> window.location.href = "dashboard.php"; </script>';
+    }
+    ?>
+    
+  
   
 
 
-    <?php
+    
+    <?php 
     
     if (isset($_POST['accept_doctor'])) {
       // Sanitize and retrieve data from the form
-      $request_id = $mysqli->real_escape_string($_POST['request_id']);
       $account_id = $mysqli->real_escape_string($_POST['account_id']);
+      $request_id = $mysqli->real_escape_string($_POST['request_id']);
       $specialization = $mysqli->real_escape_string($_POST['specialization']);
       
       if (!empty($request_id) && !empty($account_id)) {
@@ -248,11 +291,10 @@ if(isset($_SESSION['username']) && $_SESSION['user_type'] == '2') {
                   // Update user_type in tbluseraccount
                   $query_update_user_type = "UPDATE tbluseraccount SET user_type = 1 WHERE account_id = '$account_id'";
                   $result_update_user_type = $mysqli->query($query_update_user_type);
-                  
-                 
-              } else {
+              }else {
                   echo 'Error deleting request: ' . $mysqli->error;
               }
+              echo '<script> window.location.href = "dashboard.php"; </script>';
           } else {
               echo 'Error inserting doctor: ' . $mysqli->error;
           }
@@ -260,13 +302,52 @@ if(isset($_SESSION['username']) && $_SESSION['user_type'] == '2') {
           echo 'Error: Request ID or Account ID is empty.';
       }
   }
-  
-  
-}
+  ?>
 
-    ?>
+
+<?php
+
+if (isset($_POST['resign-doctor']))
+{
+
+    $doctor_id2 = $mysqli->real_escape_string($_POST['doctor_id2']);
+    $account_id2 = $mysqli->real_escape_string($_POST['account_id2']);
+
+
+            if (!empty($doctor_id2)) {
+                // Insert data into tbldoctor table                
+                // var_dump($doctor_id2);
+
+                $query_delete_doctor = "DELETE FROM tbldoctor WHERE account_id = '$account_id2'";
+                $result_delete_doctor = $mysqli->query($query_delete_doctor);
+                if ($result_delete_doctor){
+                    $query_update_user_type_delete_doctor = "UPDATE tbluseraccount SET user_type = 0 WHERE account_id = '$account_id2'";
+                $mysqli->query($query_update_user_type_delete_doctor);
+                }
+                else{
+                    echo 'Error updating user type: ' . $mysqli->error;
+                }
+        }
+        else {
+            echo 'Error deleting doctor: ' . $mysqli->error;
+        }
+
+        echo '<script> window.location.href = "dashboard.php"; </script>';
+
+    }
+?>
+
+
     
+    <?php
+    }
+
+
+
+?>
+
     
+
 
  
 
