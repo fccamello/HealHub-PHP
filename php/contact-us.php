@@ -18,41 +18,19 @@
 </head>
 <body>
         
-      <div id="container">
+    <div id="container">
 
-        <div class="first-div" style="background-color: none">
-            
-            <div id ="contact-us-text">
-                CONTACT US
+    <img src="/images/contact-us2.png" style="width: 100%; height: 100%;" >
 
-                 </div>
 
-                <div id="about-us-content-1">
-                    <br>
-                        JOSHUA NAPINAS <br> <br>
-
-                        ☎ 09123456789
-                        <br>
-                        📧 joshua.napinas@cit.edu
-                        <br> 📍 Dalaguete, Cebu 
-                </div>
-
-                <div id="about-us-content-2">
-                    <br>
-                    FRIA MAE CAMELLO <br> <br>
-                    ☎ 09123456789
-                    <br>
-                    📧friamae.camello@cit.edu
-                    <br> 📍 Cebu City, Cebu 
-            </div>
-
-        </div>
-      </div>
-
-      <footer class="page-footer">
+        <footer class="page-footer">
             <h2>Fria Mae Camello</h2>
             <h4>BSCS - 2</h4>
         </footer>
+
+      </div>
+
+     
 
 
 
