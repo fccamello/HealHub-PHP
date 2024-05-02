@@ -63,11 +63,15 @@ if(isset($_SESSION['username'])) {
             <button id="doctor-request-button" name="btnrequestdoctor" type="submit">Click here</button>
         </form>
     <?php
-    } elseif(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1) {
+    } elseif(isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1) { 
         // Display a message indicating that the user is already a doctor
-        echo "You are now a doctor.";
+        echo "You are now a doctor.";    
+    ?>
+       
+
+        <?php
     }
-} else {
+}  else {
     echo "<p>PLEASE LOG IN FIRST</p>";
 }
 ?>

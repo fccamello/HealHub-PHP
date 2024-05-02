@@ -45,6 +45,9 @@
       <li class="nav-item">
         <a class="nav-link" href="contact-us.php" style="color: white;">Contact Us</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="reports.php" style="color: white;">Report</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
           Patient
@@ -55,13 +58,14 @@
           <!-- <a class="dropdown-item" href="#" style="color: black;">Something else here</a> -->
         </div>
       </li>
+     
     </ul>
 
     <?php
   // Check if we want to include login and register buttons
   if ($includeLoginRegister) {
     ?>
-    <ul class="navbar-nav">
+    <ul class="navbar-nav"  style="margin-left:auto; margin-right: 10%">
       <li>
         <a href="login.php" style="color: white;">
           <button class="buttons" id="btn-login">Login</button>
