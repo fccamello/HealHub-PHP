@@ -180,7 +180,7 @@ $resultsetdoctor = $mysqli2->query("SELECT* from tbldoctor") or die ($mysqli2->e
 if(isset($_SESSION['username']) && $_SESSION['user_type'] == '2') {
 ?>
     <p style="text-align: center; margin-top: 2%">REQUEST DOCTOR TABLE</p>
-    <table id="tblupgraderequest" cellspacing="0" width="100%" style="margin-top: 40px;">
+    <table id="tblupgraderequest" cellspacing="0" width="80%" style="margin-top: 40px; margin-left: auto; margin-right:auto; text-align:center">
         <thead>
             <tr>
                 <th> Request ID </th>
@@ -208,42 +208,35 @@ if(isset($_SESSION['username']) && $_SESSION['user_type'] == '2') {
     </table>
 
     <p style="text-align: center; margin-top: 2%">ACCEPTED DOCTOR TABLE</p>
-    <table id="tbldoctor" cellspacing="0" width="100%" style="margin-top: 40px;">
-        <thead>
+    <table id="tbldoctor" cellspacing="0" width="100%" style="margin-top: 40px; margin-left: auto; margin-right:auto; text-align:center;">
+    <thead>
+        <tr>
+            <th>Doctor ID</th>
+            <th>Account ID</th>
+            <th>Specialization</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php while ($row = $resultsetdoctor->fetch_assoc()): ?>
             <tr>
-                <th> Doctor ID </th>
-                <th> Account ID </th>
-                <th> Specialization </th>
+                <td style="text-align: center;"><?php echo $row['doctor_id'] ?></td>
+                <td style="text-align: center;"><?php echo $row['account_id'] ?></td>
+                <td style="text-align: center;"><?php echo $row['specialization'] ?></td>
+                <td>
+                    <form method="POST">
+                        <input type="hidden" name="doctor_id" value="<?php echo $row['doctor_id'] ?>">
+                        <input type="hidden" name="account_id" value="<?php echo $row['account_id'] ?>">
+                        <input type="text" name="updated-doctor-specialization" placeholder="Specialization">
+                        <button id="add-specialization" name="add-specialization" type="submit">Update specialization</button>
+                        <button id="resign-doctor" name="resign-doctor" type="submit">Resign Doctor</button>
+                    </form>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            <?php while ($row = $resultsetdoctor -> fetch_assoc() ) : ?>
-                <tr> 
-                    <td style="text-align: center;"><?php echo $row['doctor_id'] ?></td>
-                    <td style="text-align: center;"><?php echo $row['account_id'] ?></td>
-                    <td style="text-align: center;"><?php echo $row['specialization'] ?></td>
-                    <td> 
-                        <form method ="POST">
-                            <input type="hidden" name="doctor_id" value="<?php echo $row['doctor_id'] ?>">
-                            <input type="hidden" name="account_id" value="<?php echo $row['account_id'] ?>">
-                            <input type="hidden" name="specialization" value="<?php echo $row['specialization'] ?>">
-                         <input id ="updated-specialization" name="updated-doctor-specialization" placeholder="Add specialization">
-                         <button id ="add-specialization" name="add-specialization" type="submit" > Update specialization </button> 
-                         <!-- <button id ="resign-doctor" name="resign-doctor" type="submit" > Resign Doctor </button>  -->
-                         </form>
+        <?php endwhile; ?>
+    </tbody>
+</table>
 
-                         <form method ="POST">
-                            <input type="hidden" name="doctor_id2" value="<?php echo $row['doctor_id'] ?>">
-                            <input type="hidden" name="account_id2" value="<?php echo $row['account_id'] ?>">
-                            <input type="hidden" name="specialization2" value="<?php echo $row['specialization'] ?>">
-                         <button id ="resign-doctor" name="resign-doctor" type="submit" > Resign Doctor </button> 
-                         </form>
-                    </td>
-
-                </tr>
-            <?php endwhile;?>
-        </tbody>
-    </table>
             
     
   

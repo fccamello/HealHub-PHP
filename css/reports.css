@@ -41,3 +41,13 @@ body {
     background-color: pink;
 }
 
+
+.tblrep{
+  border: 1px solid black;
+}
+
+.tblrep2{
+  background-color: #201550; 
+  color: #fef4ee;
+  border: 1px solid black;
+}
