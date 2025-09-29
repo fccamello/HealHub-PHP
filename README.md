@@ -22,7 +22,7 @@ A web-based **Hospital Management System** built with **PHP** and **SQL** that s
 ---
 ## Metadata
 
-## User 
+# User 
 
 | SeqNo | Field Name     | Type       | Length | Domain                |
 |-------|----------------|------------|--------|-----------------------|
@@ -34,4 +34,27 @@ A web-based **Hospital Management System** built with **PHP** and **SQL** that s
 | 6     | Age            | Integer    | 3      | 001 – 999             |
 | 7     | Contact Number | VarChar    | 11     | 0 – 9                 |
 | 8     | UserType       | Integer    | 1      | 0 – 2                 |
+
+# Account 
+
+| SeqNo | Field Name     | Type       | Length | Domain                            |
+|-------|----------------|------------|--------|-----------------------------------|
+| 1     | AccountID      | AutoNumber | 7      | 0000001 – 9999999                 |
+| 2     | UserID         | Integer    | 100    | 0000001 – 9999999                 |
+| 3     | Email          | VarChar    | 100    | A - Z, 0 - 9, @_.                 |
+| 4     | Password       | Varchar    | 100    | A - Z, 0 - 9, !#$%&'*+-/=?^_`{|}~ |
+| 5     | Username       | VarChar    | 100    | A - Z, 0 - 9                      |
+
+# Patient 
+
+| SeqNo | Field Name       | Type       | Length | Domain                  |
+|-------|------------------|------------|--------|-------------------------|
+| 1     | PatientID        | AutoNumber | 7      | 0000001 – 9999999       |
+| 2     | AccountID        | Integer    | 7      | 0000001 – 9999999       |
+| 3     | MedicalRecordID  | Integer    | 7      | 0000001 – 9999999       |
+| 4     | AppointmentID    | Integer    | 7      | 0000001 – 9999999       |
+| 5     | Bill             | Double     | 12     | 0.01 – 999999999.99     |
+
+
+
 
